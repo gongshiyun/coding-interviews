@@ -1,7 +1,7 @@
 # 剑指offer编程题练习
 记录本人剑指offer编程题的解题思路
 
-
+[TOC]
 
 ## 1.二维数组中的查找
 
@@ -106,6 +106,91 @@ public class Solution {
         }
         return result;
     }
+}
+```
+
+
+
+## 4.重建二叉树
+
+输入某二叉树的前序遍历和中序遍历的结果，请重建出该二叉树。假设输入的前序遍历和中序遍历的结果中都不含重复的数字。例如输入前序遍历序列{1,2,4,7,3,5,6,8}和中序遍历序列{4,7,2,1,5,3,8,6}，则重建二叉树并返回。
+
+**解题思路：**
+
+说实话，看了题目我也有点懵，啥是前序遍历和中序遍历？好像还有个叫后序遍历吧，都已经忘了，那就重新捡起来吧！
+
+![img](README.assets/20180507105447745.png)
+
+**前序遍历：**
+
+对于当前节点，先输出该节点，然后输出他的左孩子，最后输出他的右孩子。对应顺序为ABC
+
+**中序遍历：**
+
+对于当前结点，先输出它的左孩子，然后输出该结点，最后输出它的右孩子。对应顺序为BAC
+
+**后序遍历：**
+
+对于当前结点，先输出它的左孩子，然后输出它的右孩子，最后输出该结点。对应顺序为BCA
+
+了解到这三种遍历方法后，可以知道，前序遍历的第一个数，一定是根结点，中序遍历从开始到根结点数的范围，是二叉树根节点的左子树。
+
+如题目所述的前序遍历序列{1,2,4,7,3,5,6,8}和中序遍历序列{4,7,2,1,5,3,8,6}，根节点是1，从中序遍历序列知道，{4，7，2}是左子树的中序遍历序列，{5，3，8，6}是右子树的中序遍历序列。再从前序遍历序列中知道，{2，4，7}是左子树的前序遍历序列，{3，5，6，8}是右子树的前序遍历序列
+
+对于左子树：2是根节点，{4，7}是左子树的中序遍历序列，{4，7}是左子树的前序遍历序列。通过前序遍历序列得知4是左子树根结点，由中序遍历序列{4，7}可知，7是右子树的前序遍历序列。
+
+按照这套逻辑，最后得出树如下：
+
+![image-20200129145735077](README.assets/image-20200129145735077.png)
+
+总结一下，递归重建二叉树的逻辑：
+
+1.通过前序遍历序列的第一位开始遍历，是树的根节点
+
+2.在中序遍历序列中，找到该根结点数，左右两边的序列就是左子树和右子树的中序遍历序列，得出左子树节点数量A和右子树的节点数量B
+
+3.回到前序遍历序列，找到左子树的前序遍历序列和右子树的前序遍历序列，从第一位开始，后面的A位就是左子树的前序遍历序列，再后面的B位就是右子树的前序遍历序列
+
+4.对于左子树和右子树，各自重新从第一步开始重建二叉树
+
+**JAVA代码：**
+
+```java
+public TreeNode reConstructBinaryTree(int [] pre, int [] in) {
+    return reConstructBinaryTree(pre, in, 0, pre.length - 1, 0, in.length - 1);
+}
+
+
+/**
+ * 递归重建二叉树
+ *
+ * @param pre     前序遍历序列
+ * @param in      中序遍历序列
+ * @param preLow  前序遍历序列低位下标
+ * @param preHigh 前序遍历序列高位下标
+ * @param inLow   后序遍历序列低位下标
+ * @param inHigh  后序遍历序列高位下标
+ * @return
+ */
+public TreeNode reConstructBinaryTree(int[] pre, int[] in, int preLow, int preHigh, int inLow, int inHigh) {
+    if (preHigh < preLow || inHigh < inLow) {
+        return null;
+    }
+
+    // 前序遍历的第一个数是根结点
+    int rootVal = pre[preLow];
+    TreeNode root = new TreeNode(rootVal);
+    for (int i = inLow; i <= inHigh; i++) {
+        if (in[i] == rootVal) {
+            // 计算左子树的节点数量
+            int leftTreeNodeNum = i - inLow;
+            // 左子树前序遍历序列和右子树前序遍历序列的分割点下标
+            int preMid = preLow + leftTreeNodeNum;
+            root.left = reConstructBinaryTree(pre, in, preLow + 1, preMid, inLow, i);
+            root.right = reConstructBinaryTree(pre, in, preMid + 1, preHigh, i + 1, inHigh);
+        }
+    }
+    return root;
 }
 ```
 
