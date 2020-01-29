@@ -1,7 +1,12 @@
 # 剑指offer编程题练习
-记录本人剑指offer编程题的解题思路
 
 [TOC]
+
+## 前言
+
+本文记录本人剑指offer编程题的解题思路，题目从牛客网获取，地址https://www.nowcoder.com/ta/coding-interviews?page=1
+
+
 
 ## 1.二维数组中的查找
 
@@ -191,6 +196,39 @@ public TreeNode reConstructBinaryTree(int[] pre, int[] in, int preLow, int preHi
         }
     }
     return root;
+}
+```
+
+
+
+## 5.用两个栈实现队列
+
+用两个栈来实现一个队列，完成队列的Push和Pop操作。 队列中的元素为int类型。
+
+**解题思路：**
+
+队列的特点是先进先出，push是从尾部加入，pop是从头部出来。而栈是后进先出，与队列不一样。如果使用两个栈来实现队列的话，首先是push方法，直接使用栈的push就可以，主要是pop方法，需要将栈底部的元素拿出来，才能满足队列的要求，所以这里只能使用另一个栈来接收栈pop出来的元素，最后在最顶部的就是队列的头部元素。
+
+**JAVA代码：**
+
+```java
+public class Solution {
+    Stack<Integer> stack1 = new Stack<>();
+    Stack<Integer> stack2 = new Stack<>();
+
+    public void push(int node) {
+        stack1.push(node);
+    }
+
+    public int pop() {
+        if (stack2.isEmpty()) {
+            while (!stack1.isEmpty()) {
+                stack2.push(stack1.pop());
+            }
+        }
+
+        return stack2.pop();
+    }
 }
 ```
 
