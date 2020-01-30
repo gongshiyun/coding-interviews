@@ -332,4 +332,57 @@ public int JumpFloor(int target) {
 
 
 
+## 9.变态跳台阶
+
+一只青蛙一次可以跳上1级台阶，也可以跳上2级……它也可以跳上n级。求该青蛙跳上一个n级的台阶总共有多少种跳法。
+
+**解题思路：**
+
+参考第八题跳台阶，一次只能跳一级或者两级，第n级 *F*(n)=*F*(n - 1)+*F*(n - 2)。这题变成不限制一次跳多少级，那么第n级的跳法应该是前面所有级的跳法之和+1，1是直接跳n级，公式如下：
+
+*F*(n)=*F*(n - 1)+*F*(n - 2) + ... + F(1) + 1,  n >=3
+
+那么*F*(n) = 2*F*(n - 1)
+
+列举：
+
+1级，1种
+
+2级，2种
+
+3级，111，12，21，3 4种
+
+4级，1111，112，121，211，22，31，13，4 8种
+
+5级。。。
+
+符合该公式
+
+**JAVA代码：**
+
+```java
+public int JumpFloorII(int target) {
+    if (target <= 0) {
+      throw new IllegalArgumentException();
+    }
+    if (target == 1) {
+      return 1;
+    }
+    if (target == 2) {
+      return 2;
+    }
+    return 2 * JumpFloorII(target - 1);
+}
+```
+
+还有更牛逼的方法：
+
+```java
+public int JumpFloorII(int target) {
+    if (target <= 0) {
+        throw new IllegalArgumentException();
+    }
+    return 1 << (target - 1);
+}
+```
 
