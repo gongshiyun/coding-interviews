@@ -342,7 +342,7 @@ public int JumpFloor(int target) {
 
 *F*(n)=*F*(n - 1)+*F*(n - 2) + ... + F(1) + 1,  n >=3
 
-那么*F*(n) = 2*F*(n - 1)
+那么*F*(n) = 2*F*(n - 1) = 2^(n-1),  n >=3
 
 列举：
 
@@ -385,4 +385,3 @@ public int JumpFloorII(int target) {
     return 1 << (target - 1);
 }
 ```
-
