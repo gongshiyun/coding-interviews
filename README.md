@@ -289,3 +289,47 @@ public int Fibonacci(int n) {
 }
 ```
 
+
+
+## 8. 跳台阶
+
+一只青蛙一次可以跳上1级台阶，也可以跳上2级。求该青蛙跳上一个n级的台阶总共有多少种跳法（先后次序不同算不同的结果）。
+
+**解题思路：**
+
+先列出来各种情况：
+
+1级：1种 1
+
+2级：2种 11 2
+
+3级：3种 111 12 21
+
+4级：5种 1111 112 211 121 22
+
+5级：8种 11111 1112 122 212 2111 221 1211 1121
+
+发现一个规律，大于2级台阶，f(n) = f(n-1)+f(n-2)，是一个斐波那契数列
+
+可以这样思考：一次只能跳一级或者两级，那么只需考虑前一级台阶再跳一级，或者前两级台阶再跳两级的种数的和。实现参考斐波那契数列的计算。
+
+**JAVA代码：**
+
+```java
+public int JumpFloor(int target) {
+    if (target <= 0) {
+        throw new IllegalArgumentException();
+    }
+    if (target == 1) {
+        return 1;
+    }
+    if (target == 2) {
+        return 2;
+    }
+    return JumpFloor(target - 1) + JumpFloor(target - 2);
+}
+```
+
+
+
+
