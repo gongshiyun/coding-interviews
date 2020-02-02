@@ -463,6 +463,14 @@ public int RectCover(int target) {
 
 
 
+**常识1：在计算机系统中，数值一律用补码来表示和存储。**
+
+**常识2：正数的原码、反码、补码都是其本身。**
+
+也就是说，根本就不需要考虑数的符号问题。
+
+
+
 **解题思路：**
 
 将整数与1做与操作后，如果等于1说明最低位为1，然后对整数进行无符号右移，继续上述操作，直到整数为0结束。
@@ -479,6 +487,42 @@ public int NumberOf1(int n) {
         n >>>= 1;
     }
     return count;
+}
+```
+
+
+
+## 12.数值的整数次方
+
+给定一个double类型的浮点数base和int类型的整数exponent。求base的exponent次方。
+
+保证base和exponent不同时为0
+
+**解题思路：**
+
+直接用Math.power方法就解决了。当然这样就太简单了，还是不要调API比较好。这题可以从减少乘的次数的思想出发，使用递归处理
+
+JAVA代码：
+
+```java
+public double Power(double base, int exponent) {
+    if (base == 0 && exponent == 0) {
+    		throw new RuntimeException();
+    }
+    if (base == 0) {
+    		return 0;
+    }
+    if (exponent == 0) {
+    		return 1;
+    }
+    if (exponent == 1) {
+    		return base;
+    }
+    if (exponent == -1) {
+    		return 1 / base;
+    }
+    return Power(base, exponent / 2) * Power(base, exponent / 2)
+    		* Power(base, exponent % 2);
 }
 ```
 
