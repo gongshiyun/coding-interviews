@@ -583,3 +583,36 @@ public ListNode FindKthToTail(ListNode head, int k) {
 }
 ```
 
+
+
+## 15.反转链表
+
+输入一个链表，反转链表后，输出新链表的表头。
+
+**解题思路：**
+
+遍历链表，将链表前后结点的下一位改为前一位
+
+**JAVA代码：**
+
+```java
+public ListNode ReverseList(ListNode head) {
+    if (head == null) {
+        return null;
+    }
+
+    ListNode p = head;
+    ListNode temp;
+    ListNode before = null;
+    while (true) {
+        temp = p.next;
+        p.next = before;
+        before = p;
+        if (temp == null) {
+            break;
+        }
+        p = temp;
+    }
+    return p;
+}
+```
