@@ -556,3 +556,30 @@ public static void reOrderArray(int [] array) {
 }
 ```
 
+
+
+## 14.链表中倒数第k个结点
+
+输入一个链表，输出该链表中倒数第k个结点。
+
+**解题思路：**
+
+使用两个指针遍历链表，第二个指针在第一个指针遍历了k-1个结点后开始遍历，当第一个指针到达尾部时，第二个指针所在位置就是倒数第k个结点。
+
+**JAVA代码：**
+
+```java
+public ListNode FindKthToTail(ListNode head, int k) {
+        ListNode p1 = head;
+        ListNode p2 = head;
+        int i = 0;
+        for (; p1 != null; i++) {
+            if (i >= k) {
+                p2 = p2.next;
+            }
+            p1 = p1.next;
+        }
+        return i < k ? null : p2;
+}
+```
+
