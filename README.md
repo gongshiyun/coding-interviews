@@ -1,14 +1,38 @@
-# 剑指offer编程题练习
+# <span id="head1"> 剑指offer编程题练习</span>
 
-[toc]
+- [ 剑指offer编程题练习](#head1)
+	- [ 前言](#head2)
+	- [ 1.二维数组中的查找](#head3)
+	- [ 2.替换空格](#head4)
+	- [ 3.从尾到头打印链表](#head5)
+	- [ 4.重建二叉树](#head6)
+	- [ 5.用两个栈实现队列](#head7)
+	- [ 6.旋转数组的最小数字](#head8)
+	- [ 7.斐波那契数列](#head9)
+	- [8. 跳台阶](#head10)
+	- [ 9.变态跳台阶](#head11)
+	- [ 10.矩形覆盖](#head12)
+	- [ 11.二进制中1的个数](#head13)
+		- [ 什么是补码](#head14)
+	- [ 12.数值的整数次方](#head15)
+	- [ 13.调整数组顺序使奇数位于偶数前面](#head16)
+	- [ 14.链表中倒数第k个结点](#head17)
+	- [ 15.反转链表](#head18)
+	- [16. 合并两个排序的链表](#head19)
+	- [ 17.树的子结构](#head20)
+	- [ 18.二叉树镜像](#head21)
+	- [ 19.顺时针打印矩阵](#head22)
+	- [ 20.包含min函数的栈](#head23)
 
-## 前言
+
+
+## <span id="head2"> 前言</span>
 
 本文记录本人剑指offer编程题的解题思路，题目从牛客网获取，地址https://www.nowcoder.com/ta/coding-interviews?page=1
 
 
 
-## 1.二维数组中的查找
+## <span id="head3"> 1.二维数组中的查找</span>
 
 在一个二维数组中（每个一维数组的长度相同），每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。
 该题在一个横竖都是递增有序的长度相等的二维数组中找到一个数。可以直接遍历所有得出答案，但那就太low太暴力了。
@@ -42,7 +66,7 @@ public boolean Find(int target, int[][] array) {
 
 
 
-## 2.替换空格
+## <span id="head4"> 2.替换空格</span>
 
 请实现一个函数，将一个字符串中的每个空格替换成“%20”。例如，当字符串为We Are Happy.则经过替换之后的字符串为We%20Are%20Happy。
 
@@ -73,7 +97,7 @@ public String replaceString(StringBuffer str) {
 
 
 
-## 3.从尾到头打印链表
+## <span id="head5"> 3.从尾到头打印链表</span>
 
 输入一个链表，按链表从尾到头的顺序返回一个ArrayList。
 
@@ -116,7 +140,7 @@ public class Solution {
 
 
 
-## 4.重建二叉树
+## <span id="head6"> 4.重建二叉树</span>
 
 输入某二叉树的前序遍历和中序遍历的结果，请重建出该二叉树。假设输入的前序遍历和中序遍历的结果中都不含重复的数字。例如输入前序遍历序列{1,2,4,7,3,5,6,8}和中序遍历序列{4,7,2,1,5,3,8,6}，则重建二叉树并返回。
 
@@ -201,7 +225,7 @@ public TreeNode reConstructBinaryTree(int[] pre, int[] in, int preLow, int preHi
 
 
 
-## 5.用两个栈实现队列
+## <span id="head7"> 5.用两个栈实现队列</span>
 
 用两个栈来实现一个队列，完成队列的Push和Pop操作。 队列中的元素为int类型。
 
@@ -234,7 +258,7 @@ public class Solution {
 
 
 
-## 6.旋转数组的最小数字
+## <span id="head8"> 6.旋转数组的最小数字</span>
 
 把一个数组最开始的若干个元素搬到数组的末尾，我们称之为数组的旋转。
 
@@ -261,7 +285,7 @@ public static int minNumberInRotateArray(int [] array) {
 
 
 
-## 7.斐波那契数列
+## <span id="head9"> 7.斐波那契数列</span>
 
 大家都知道斐波那契数列，现在要求输入一个整数n，请你输出斐波那契数列的第n项（从0开始，第0项为0）。
 
@@ -291,7 +315,7 @@ public int Fibonacci(int n) {
 
 
 
-## 8. 跳台阶
+## <span id="head10">8. 跳台阶</span>
 
 一只青蛙一次可以跳上1级台阶，也可以跳上2级。求该青蛙跳上一个n级的台阶总共有多少种跳法（先后次序不同算不同的结果）。
 
@@ -332,7 +356,7 @@ public int JumpFloor(int target) {
 
 
 
-## 9.变态跳台阶
+## <span id="head11"> 9.变态跳台阶</span>
 
 一只青蛙一次可以跳上1级台阶，也可以跳上2级……它也可以跳上n级。求该青蛙跳上一个n级的台阶总共有多少种跳法。
 
@@ -388,7 +412,7 @@ public int JumpFloorII(int target) {
 
 
 
-## 10.矩形覆盖
+## <span id="head12"> 10.矩形覆盖</span>
 
 我们可以用2\*1的小矩形横着或者竖着去覆盖更大的矩形。请问用n个2\*1的小矩形无重叠地覆盖一个2*n的大矩形，总共有多少种方法？
 
@@ -425,11 +449,11 @@ public int RectCover(int target) {
 
 
 
-## 11.二进制中1的个数
+## <span id="head13"> 11.二进制中1的个数</span>
 
 输入一个整数，输出该数二进制表示中1的个数。其中负数用补码表示。
 
-### 什么是补码
+### <span id="head14"> 什么是补码</span>
 
 计算机中的有符号数有三种表示方法，即[原码](https://baike.baidu.com/item/原码/1097586)、[反码](https://baike.baidu.com/item/反码/769985)和补码。三种表示方法均有符号位和数值位两部分，符号位都是用0表示“正”，用1表示“负”，而数值位，三种表示方法各不相同。在[计算机](https://baike.baidu.com/item/计算机/140338)系统中，数值一律用补码来表示和存储。原因在于，使用补码，可以将符号位和数值域统一处理；同时，加法和减法也可以统一处理。
 
@@ -441,9 +465,9 @@ public int RectCover(int target) {
 
 - 数0的补码表示是**唯一**的
 
-  [+0]补=[+0]反=[+0]原=00000000
+[+0]补=[+0]反=[+0]原=00000000
 
-  [ -0]补=11111111+1=00000000
+[ -0]补=11111111+1=00000000
 
 
 
@@ -492,7 +516,7 @@ public int NumberOf1(int n) {
 
 
 
-## 12.数值的整数次方
+## <span id="head15"> 12.数值的整数次方</span>
 
 给定一个double类型的浮点数base和int类型的整数exponent。求base的exponent次方。
 
@@ -528,7 +552,7 @@ public double Power(double base, int exponent) {
 
 
 
-## 13.调整数组顺序使奇数位于偶数前面
+## <span id="head16"> 13.调整数组顺序使奇数位于偶数前面</span>
 
 输入一个整数数组，实现一个函数来调整该数组中数字的顺序，使得所有的奇数位于数组的前半部分，所有的偶数位于数组的后半部分，并保证奇数和奇数，偶数和偶数之间的相对位置不变。
 
@@ -558,7 +582,7 @@ public static void reOrderArray(int [] array) {
 
 
 
-## 14.链表中倒数第k个结点
+## <span id="head17"> 14.链表中倒数第k个结点</span>
 
 输入一个链表，输出该链表中倒数第k个结点。
 
@@ -585,7 +609,7 @@ public ListNode FindKthToTail(ListNode head, int k) {
 
 
 
-## 15.反转链表
+## <span id="head18"> 15.反转链表</span>
 
 输入一个链表，反转链表后，输出新链表的表头。
 
@@ -619,7 +643,7 @@ public ListNode ReverseList(ListNode head) {
 
 
 
-## 16. 合并两个排序的链表
+## <span id="head19">16. 合并两个排序的链表</span>
 
 输入两个单调递增的链表，输出两个链表合成后的链表，当然我们需要合成后的链表满足单调不减规则。
 
@@ -661,7 +685,7 @@ public ListNode Merge(ListNode list1,ListNode list2) {
 
 
 
-## 17.树的子结构
+## <span id="head20"> 17.树的子结构</span>
 
 输入两棵二叉树A，B，判断B是不是A的子结构。（ps：我们约定空树不是任意一个树的子结构）
 
@@ -671,6 +695,7 @@ public ListNode Merge(ListNode list1,ListNode list2) {
 递归：判断A和B的节点是否相等：先判断根节点，然后递归判断左子树，右子树的节点。
 
 **JAVA代码：**
+
 ```java
 public static boolean dfs(TreeNode root1, TreeNode root2) {
     if (root2 == null) {
@@ -690,7 +715,7 @@ public static boolean HasSubtree(TreeNode root1, TreeNode root2) {
 }
 ```
 
-## 18.二叉树镜像
+## <span id="head21"> 18.二叉树镜像</span>
 
 操作给定的二叉树，将其变换为源二叉树的镜像。
 
@@ -720,7 +745,7 @@ public void Mirror(TreeNode root) {
 
 
 
-## 19.顺时针打印矩阵
+## <span id="head22"> 19.顺时针打印矩阵</span>
 
 输入一个矩阵，按照从外向里以顺时针的顺序依次打印出每一个数字，例如，如果输入如下4 X 4矩阵： 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 则依次打印出数字1,2,3,4,8,12,16,15,14,13,9,5,6,7,11,10.
 
@@ -782,7 +807,7 @@ public ArrayList<Integer> printMatrix(int [][] matrix) {
 
 
 
-## 20.包含min函数的栈
+## <span id="head23"> 20.包含min函数的栈</span>
 
 定义栈的数据结构，请在该类型中实现一个能够得到栈中所含最小元素的min函数（时间复杂度应为O（1））。
 
@@ -826,4 +851,3 @@ public class Solution {
     }
 }
 ```
-
