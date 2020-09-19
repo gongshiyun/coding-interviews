@@ -689,3 +689,32 @@ public static boolean HasSubtree(TreeNode root1, TreeNode root2) {
     return dfs(root1, root2) || HasSubtree(root1.left, root2) || HasSubtree(root1.right, root2);
 }
 ```
+
+## 18.二叉树镜像
+
+操作给定的二叉树，将其变换为源二叉树的镜像。
+
+**解题思路**
+
+使用递归思想：
+
+终止条件：节点为null
+
+递归逻辑：切换节点的左子树和右子树位置，对左节点和右节点再应用该逻辑
+
+
+**JAVA代码**
+
+```java
+public void Mirror(TreeNode root) {
+    if (root == null) {
+      return;
+    }
+    Mirror(root.left);
+    Mirror(root.right);
+    TreeNode tmp = root.left;
+    root.left = root.right;
+    root.right = tmp;
+}
+```
+
