@@ -17,4 +17,22 @@ public class Solution {
         }
         return Fibonacci(n - 1) + Fibonacci(n - 2);
     }
+
+    public int Fibonacci2(int n) {
+        if (n < 1) {
+            throw new IllegalArgumentException();
+        }
+        if (n == 1) {
+            return 1;
+        }
+        int sum;
+        int prev = 0;
+        int cur = 1;
+        for (int i = 2; i <= n; i++) {
+            sum = prev + cur;
+            prev = cur;
+            cur = sum;
+        }
+        return cur;
+    }
 }
